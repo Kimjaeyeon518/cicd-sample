@@ -9,11 +9,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Connect deploy key
         uses: cloudtype-github-actions/connect@v1
         with:
           token: ${{ secrets.CLOUDTYPE_TOKEN }}
           ghtoken: ${{ secrets.GHP_TOKEN }}
+
       - name: Deploy
         uses: cloudtype-github-actions/deploy@v1
         with:
@@ -21,7 +23,7 @@ jobs:
           project: # 워크스페이스 이름/프로젝트 이름 ex) nbc.docker/cicd
           stage: main
           yaml: |
-            name: # 프로젝트 이름 ex) `cicd`
+            name: cicd-sample
             app: java@17
             options:
               ports: 8080
